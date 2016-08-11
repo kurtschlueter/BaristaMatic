@@ -63,7 +63,7 @@ ingredients = {
                 "units_left" => 10}
             }
 
-# Calculate the
+# Calculate the price of an individual drink. Returns price
 def drink_price(drink_recipes, ingredients, drink)
   total = 0
   drink_recipes[drink]["ingredients"].each do |ingredient, units|
@@ -72,9 +72,24 @@ def drink_price(drink_recipes, ingredients, drink)
   return total
 end
 
-def units_left(ingredient)
-
-
-
+# returns true or false if store has enough ingredients to make a drink.
+def can_make_drink?(drink_recipes, ingredients, drink)
+  drink_recipes[drink]["ingredients"].each do |ingredient, units|
+    if units > ingredients[ingredient]["units_left"]
+      return false
+    end
+  end
+  return true
 end
+
+# make an individual drink. not sure what this will return yet. Also, it doesn't make sense to loop through twice with this method and the can_make_drink method. Will refactor later.
+def make_drink(drink_recipes, ingredients, drink)
+  if can_make_drink?(drink_recipes, ingredients, drink) == true
+    drink_recipes[drink]["ingredients"].each do |ingredient, units|
+      ingredients[ingredient]["units_left"] = ingredients[ingredient]["units_left"] - units
+    end
+  end
+  return drink
+end
+
 p drink_price(drink_recipes, ingredients, "Coffee")

@@ -88,8 +88,17 @@ def make_drink(drink_recipes, ingredients, drink)
     drink_recipes[drink]["ingredients"].each do |ingredient, units|
       ingredients[ingredient]["units_left"] = ingredients[ingredient]["units_left"] - units
     end
+    return [true, drink]
+  else
+    return [false, drink]
   end
-  return drink
+end
+
+# restocks all ingredients to maximum value (10)
+def restock(ingredients, ingredient, units)
+  ingredients.each do |ingredient, details|
+    ingredient["units_left"] = 10
+  end
 end
 
 p drink_price(drink_recipes, ingredients, "Coffee")

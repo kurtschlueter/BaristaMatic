@@ -1,4 +1,4 @@
-class BaristaMatic
+class Drinks
   attr_accessor :drink_recipes, :ingredients
 
   def initialize

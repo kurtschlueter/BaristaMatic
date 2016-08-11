@@ -12,7 +12,7 @@ class BaristaMatic
           {"espresso" => 2, "steamed milk" => 1}},
       "Caffe Americano" => {"ingredients" =>
           {"espresso" => 3}},
-      "Cafe Mocha" => {"ingredients" =>
+      "Caffe Mocha" => {"ingredients" =>
           {"espresso" => 1, "cocoa" => 1, "steamed milk" => 1, "whipped cream" => 1}},
       "Cappuccino" => {"ingredients" =>
           {"espresso" => 2, "steamed milk" => 1, "foamed milk" => 1}}
@@ -32,13 +32,14 @@ class BaristaMatic
     }
   end
 
-  # Calculate the price of an individual drink. Returns price
+  # Calculate the price of an individual drink. Returns price in string format
   def drink_price(drink)
     total = 0
     @drink_recipes[drink]["ingredients"].each do |ingredient, units|
       total = total + @ingredients[ingredient]["price"] * units
     end
-    return total
+    return '%.2f' % [total]
+    # return total.round(2)
   end
 
   # returns true or false if store has enough ingredients to make a drink.
@@ -53,7 +54,7 @@ class BaristaMatic
 
   # make an individual drink. not sure what this will return yet. Also, it doesn't make sense to loop through twice with this method and the can_make_drink method. Will refactor later.
   def make_drink(drink)
-    if can_make_drink?(drink_recipes, ingredients, drink) == true
+    if can_make_drink?(drink) == true
       @drink_recipes[drink]["ingredients"].each do |ingredient, units|
         @ingredients[ingredient]["units_left"] = @ingredients[ingredient]["units_left"] - units
       end

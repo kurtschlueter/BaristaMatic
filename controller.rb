@@ -2,9 +2,9 @@ require_relative 'model'
 require_relative 'view'
 
 drinks = Drinks.new
+display = Display.new
 
 # This will have to get cleaned up and organized but I am just building for functionality now
-
 
 def formatting_inventory_for_print(drinks)
   inventory = []
@@ -23,9 +23,9 @@ def formatting_menu_for_print(drinks)
 end
 
 formatted_inventory = formatting_inventory_for_print(drinks) #controller
-display_inventory(formatted_inventory) #view
+display.inventory(formatted_inventory) #view
 formatted_menu = formatting_menu_for_print(drinks) #controller
-display_menu(formatted_menu) #view
+display.menu(formatted_menu) #view
 
 drink_order = drinks.make_drink('Caffe Latte') #model
 drink_order = drinks.make_drink('Caffe Latte') #model
@@ -33,11 +33,11 @@ drink_order = drinks.make_drink('Caffe Latte') #model
 drink_order = drinks.make_drink('Caffe Latte') #model
 drink_order = drinks.make_drink('Caffe Latte') #model
 drink_order = drinks.make_drink('Caffe Latte') #model
-display_order(drink_order) #view
+display.order(drink_order) #view
 
 formatted_inventory = formatting_inventory_for_print(drinks) #controller
-display_inventory(formatted_inventory) #view
+display.inventory(formatted_inventory) #view
 formatted_menu = formatting_menu_for_print(drinks) #controller
-display_menu(formatted_menu) #view
+display.menu(formatted_menu) #view
 
 

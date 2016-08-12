@@ -1,18 +1,23 @@
 class Display
+
   def menu(items)
+    items = items.sort {|a,b| a[0] <=> b[0]}
     print "Menu:"
     puts ''
-    items.each_with_index do |item, index|
-      print (index + 1).to_s + ',' + item[0] + ',$' + item[1] + ',' + item[2].to_s
+    index = 1
+    items.each do |item, details|
+      print index.to_s + ',' + item + ',$' + details["unit price"] + ',' + details["available?"].to_s
       puts ''
+      index = index + 1
     end
   end
 
   def inventory(items)
+    items = items.sort {|a,b| a[0] <=> b[0]}
     print "Inventory:"
     puts ''
-    items.each do |item|
-      print item[0] + ',' + item[1]
+    items.each do |item, details|
+      print item + ',' + details["units left"].to_s
       puts ''
     end
   end

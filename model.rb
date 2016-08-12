@@ -1,9 +1,9 @@
 class Drinks
-  attr_accessor :drink_recipes, :ingredients
+  attr_accessor :drink_details, :ingredients
 
   def initialize
     # Initial drink recipe with number of ingredients needed to make each drink
-    @drink_recipes = {
+    @drink_details = {
       "Coffee" => {"ingredients" =>
           {"coffee" => 3, "sugar" => 1, "cream" => 1}},
       "Decaf Coffee" => {"ingredients" =>
@@ -20,46 +20,54 @@ class Drinks
 
     # Initial cost and stock of each ingredient
     @ingredients = {
-      "coffee" => {"price" => 0.75, "units_left" => 10},
-      "decaf coffee" => {"price" => 0.75, "units_left" => 10},
-      "sugar" => {"price" => 0.25, "units_left" => 10},
-      "cream" => {"price" => 0.25, "units_left" => 10},
-      "steamed milk" => {"price" => 0.35, "units_left" => 10},
-      "foamed milk" => {"price" => 0.35, "units_left" => 10},
-      "espresso" => {"price" => 1.10, "units_left" => 10},
-      "cocoa" => {"price" => 0.90, "units_left" => 10},
-      "whipped cream" => {"price" => 1.00, "units_left" => 10}
+      "coffee" => {"price" => 0.75, "units left" => 10},
+      "decaf coffee" => {"price" => 0.75, "units left" => 10},
+      "sugar" => {"price" => 0.25, "units left" => 10},
+      "cream" => {"price" => 0.25, "units left" => 10},
+      "steamed milk" => {"price" => 0.35, "units left" => 10},
+      "foamed milk" => {"price" => 0.35, "units left" => 10},
+      "espresso" => {"price" => 1.10, "units left" => 10},
+      "cocoa" => {"price" => 0.90, "units left" => 10},
+      "whipped cream" => {"price" => 1.00, "units left" => 10}
     }
+
+    set_drink_prices()
+    register_all_availabilities()
   end
 
-  # Calculate the price of an individual drink. Returns price in string format
-  def drink_price(drink)
-    total = 0
-    @drink_recipes[drink]["ingredients"].each do |ingredient, units|
-      total = total + @ingredients[ingredient]["price"] * units
+  # Calculate the price of all drinks
+  def set_drink_prices
+    @drink_details.each do |drink, details|
+      total = 0
+      details["ingredients"].each do |ingredient, units|
+        total = total + @ingredients[ingredient]["price"] * units
+      end
+      details["unit price"] = '%.2f' % [total]
     end
-    return '%.2f' % [total]
-    # return total.round(2)
   end
 
-  # returns true or false if store has enough ingredients to make a drink.
-  def can_make_drink?(drink)
-    @drink_recipes[drink]["ingredients"].each do |ingredient, units|
-      if units > @ingredients[ingredient]["units_left"]
-        return false
+  # registers if all drinks are in stock or not
+  def register_all_availabilities
+    @drink_details.each do |drink, details|
+      details["available?"] = true
+      details["ingredients"].each do |ingredient, units|
+        if units > @ingredients[ingredient]["units left"]
+          details["available?"] = false
+        end
       end
     end
-    return true
   end
 
-  # make an individual drink. not sure what this will return yet. Also, it doesn't make sense to loop through twice with this method and the can_make_drink method. Will refactor later.
+  # make an individual drink. not sure what this will return yet.
   def make_drink(drink)
-    if can_make_drink?(drink) == true
-      @drink_recipes[drink]["ingredients"].each do |ingredient, units|
-        @ingredients[ingredient]["units_left"] = @ingredients[ingredient]["units_left"] - units
+    if @drink_details[drink]["available?"] == true
+      @drink_details[drink]["ingredients"].each do |ingredient, units|
+        @ingredients[ingredient]["units left"] = @ingredients[ingredient]["units left"] - units
       end
+      register_all_availabilities()
       return [true, drink]
     else
+      register_all_availabilities()
       return [false, drink]
     end
   end
@@ -67,9 +75,8 @@ class Drinks
   # restocks all ingredients to maximum value (10)
   def restock
     ingredients.each do |ingredient, details|
-      ingredient["units_left"] = 10
+      details["units left"] = 10
     end
-    return true
+    register_all_availabilities()
   end
 end
-

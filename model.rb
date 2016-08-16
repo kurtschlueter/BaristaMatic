@@ -67,6 +67,7 @@ class Drinks
       register_all_availabilities()
       return [true, drink]
     else
+      # prob dont need this next line
       register_all_availabilities()
       return [false, drink]
     end

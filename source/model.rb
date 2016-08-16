@@ -5,30 +5,30 @@ class Drinks
     # Initial drink recipe with number of ingredients needed to make each drink
     @drink_details = {
       "Coffee" => {"ingredients" =>
-          {"coffee" => 3, "sugar" => 1, "cream" => 1}},
+          {"Coffee" => 3, "Sugar" => 1, "Cream" => 1}},
       "Decaf Coffee" => {"ingredients" =>
-          {"decaf coffee" => 3, "sugar" => 1, "cream" => 1}},
+          {"Decaf Coffee" => 3, "Sugar" => 1, "Cream" => 1}},
       "Caffe Latte" => {"ingredients" =>
-          {"espresso" => 2, "steamed milk" => 1}},
+          {"Espresso" => 2, "Steamed Milk" => 1}},
       "Caffe Americano" => {"ingredients" =>
-          {"espresso" => 3}},
+          {"Espresso" => 3}},
       "Caffe Mocha" => {"ingredients" =>
-          {"espresso" => 1, "cocoa" => 1, "steamed milk" => 1, "whipped cream" => 1}},
+          {"Espresso" => 1, "Cocoa" => 1, "Steamed Milk" => 1, "Whipped Cream" => 1}},
       "Cappuccino" => {"ingredients" =>
-          {"espresso" => 2, "steamed milk" => 1, "foamed milk" => 1}}
+          {"Espresso" => 2, "Steamed Milk" => 1, "Foamed Milk" => 1}}
     }
 
     # Initial cost and stock of each ingredient
     @ingredients = {
-      "coffee" => {"price" => 0.75, "units left" => 10},
-      "decaf coffee" => {"price" => 0.75, "units left" => 10},
-      "sugar" => {"price" => 0.25, "units left" => 10},
-      "cream" => {"price" => 0.25, "units left" => 10},
-      "steamed milk" => {"price" => 0.35, "units left" => 10},
-      "foamed milk" => {"price" => 0.35, "units left" => 10},
-      "espresso" => {"price" => 1.10, "units left" => 10},
-      "cocoa" => {"price" => 0.90, "units left" => 10},
-      "whipped cream" => {"price" => 1.00, "units left" => 10}
+      "Coffee" => {"price" => 0.75, "units left" => 10},
+      "Decaf Coffee" => {"price" => 0.75, "units left" => 10},
+      "Sugar" => {"price" => 0.25, "units left" => 10},
+      "Cream" => {"price" => 0.25, "units left" => 10},
+      "Steamed Milk" => {"price" => 0.35, "units left" => 10},
+      "Foamed Milk" => {"price" => 0.35, "units left" => 10},
+      "Espresso" => {"price" => 1.10, "units left" => 10},
+      "Cocoa" => {"price" => 0.90, "units left" => 10},
+      "Whipped Cream" => {"price" => 1.00, "units left" => 10}
     }
 
     set_drink_prices()

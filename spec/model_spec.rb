@@ -49,5 +49,119 @@ describe Drinks do
     end
   end
 
+  describe "#make_drink" do
+    describe "making decaf coffees" do
+      before :all do
+        @decaf_coffee = []
+        decaf_coffee_drink_session = Drinks.new
+        4.times do |x|
+          @decaf_coffee[x] = decaf_coffee_drink_session.make_drink("Decaf Coffee")
+        end
+      end
+      it "make a Decaf coffee 1 time" do
+          expect(@decaf_coffee[1 - 1][0]).to eq true
+      end
+      it "make a Decaf coffee 3 times" do
+          expect(@decaf_coffee[3 - 1][0]).to eq true
+      end
+      it "make a Decaf coffee 4 times" do
+          expect(@decaf_coffee[4 - 1][0]).to eq false
+      end
+    end
 
+    describe "making coffees" do
+      before :all do
+        @coffee = []
+        coffee_drink_session = Drinks.new
+        4.times do |x|
+          @coffee[x] = coffee_drink_session.make_drink("Coffee")
+        end
+      end
+      it "make a coffee 1 time" do
+          expect(@coffee[1 - 1][0]).to eq true
+      end
+      it "make a coffee 3 times" do
+          expect(@coffee[3 - 1][0]).to eq true
+      end
+      it "make a coffee 4 times" do
+          expect(@coffee[4 - 1][0]).to eq false
+      end
+    end
+
+    describe "making caffe lattes" do
+      before :all do
+        @caffe_latte = []
+        caffe_latte_drink_session = Drinks.new
+        6.times do |x|
+          @caffe_latte[x] = caffe_latte_drink_session.make_drink("Caffe Latte")
+        end
+      end
+      it "make a caffe_latte 1 time" do
+          expect(@caffe_latte[1 - 1][0]).to eq true
+      end
+      it "make a caffe_latte 5 times" do
+          expect(@caffe_latte[5 - 1][0]).to eq true
+      end
+      it "make a caffe_latte 6 times" do
+          expect(@caffe_latte[6 - 1][0]).to eq false
+      end
+    end
+
+    describe "making caffe mochas" do
+      before :all do
+        @caffe_mocha = []
+        caffe_mocha_drink_session = Drinks.new
+        11.times do |x|
+          @caffe_mocha[x] = caffe_mocha_drink_session.make_drink("Caffe Mocha")
+        end
+      end
+      it "make a caffe_mocha 1 time" do
+          expect(@caffe_mocha[1 - 1][0]).to eq true
+      end
+      it "make a caffe_mocha 10 times" do
+          expect(@caffe_mocha[10 - 1][0]).to eq true
+      end
+      it "make a caffe_mocha 11 times" do
+          expect(@caffe_mocha[11 - 1][0]).to eq false
+      end
+    end
+
+    describe "making caffe americanos" do
+      before :all do
+        @caffe_americano = []
+        caffe_americano_drink_session = Drinks.new
+        4.times do |x|
+          @caffe_americano[x] = caffe_americano_drink_session.make_drink("Caffe Americano")
+        end
+      end
+      it "make a caffe_americano 1 time" do
+          expect(@caffe_americano[1 - 1][0]).to eq true
+      end
+      it "make a caffe_americano 3 times" do
+          expect(@caffe_americano[3 - 1][0]).to eq true
+      end
+      it "make a caffe_americano 4 times" do
+          expect(@caffe_americano[4 - 1][0]).to eq false
+      end
+    end
+
+    describe "making cappuccinos" do
+      before :all do
+        @cappuccino = []
+        cappuccino_drink_session = Drinks.new
+        6.times do |x|
+          @cappuccino[x] = cappuccino_drink_session.make_drink("Cappuccino")
+        end
+      end
+      it "make a cappuccino 1 time" do
+          expect(@cappuccino[1 - 1][0]).to eq true
+      end
+      it "make a cappuccino 5 times" do
+          expect(@cappuccino[5 - 1][0]).to eq true
+      end
+      it "make a cappuccino 6 times" do
+          expect(@cappuccino[6 - 1][0]).to eq false
+      end
+    end
+  end
 end

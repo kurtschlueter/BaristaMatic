@@ -25,4 +25,29 @@ describe Drinks do
       end
     end
   end
+
+  describe "#register_all_availabilities" do
+    context "when initialized" do
+      it "Coffee should be available from start" do
+        expect(drinks.drink_details["Coffee"]["available?"]).to eq true
+      end
+      it "Caffe Americano should be available from start" do
+        expect(drinks.drink_details["Caffe Americano"]["available?"]).to eq true
+      end
+      it "Caffe Latte should be available from start" do
+        expect(drinks.drink_details["Caffe Latte"]["available?"]).to eq true
+      end
+      it "Caffe Mocha should be available from start" do
+        expect(drinks.drink_details["Caffe Mocha"]["available?"]).to eq true
+      end
+      it "Cappuccino should be available from start" do
+        expect(drinks.drink_details["Cappuccino"]["available?"]).to eq true
+      end
+      it "Decaf Coffee should be available from start" do
+        expect(drinks.drink_details["Decaf Coffee"]["available?"]).to eq true
+      end
+    end
+  end
+
+
 end

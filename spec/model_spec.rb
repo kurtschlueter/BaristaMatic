@@ -164,4 +164,60 @@ describe Drinks do
       end
     end
   end
+  describe "#restock" do
+    it "expect 10 units of coffee left after coffee is made and then supply is restocked" do
+        drinks.make_drink("Coffee")
+        drinks.restock()
+        units_left = drinks.ingredients["Coffee"]["units left"]
+        expect(units_left).to eq 10
+    end
+    it "expect 10 units of decaf coffee left after decaf coffee is made and then supply is restocked" do
+        drinks.make_drink("Decaf Coffee")
+        drinks.restock()
+        units_left = drinks.ingredients["Decaf Coffee"]["units left"]
+        expect(units_left).to eq 10
+    end
+    it "expect 10 units of cocoa left after caffe mocha is made and then supply is restocked" do
+        drinks.make_drink("Caffe Mocha")
+        drinks.restock()
+        units_left = drinks.ingredients["Cocoa"]["units left"]
+        expect(units_left).to eq 10
+    end
+    it "expect 10 units of espresso left after caffe americano is made and then supply is restocked" do
+        drinks.make_drink("Caffe Americano")
+        drinks.restock()
+        units_left = drinks.ingredients["Espresso"]["units left"]
+        expect(units_left).to eq 10
+    end
+    it "expect 10 units of steamed milk left after cappuccino is made and then supply is restocked" do
+        drinks.make_drink("Cappuccino")
+        drinks.restock()
+        units_left = drinks.ingredients["Steamed Milk"]["units left"]
+        expect(units_left).to eq 10
+    end
+    it "expect 10 units of foamed milk left after cappuccino is made and then supply is restocked" do
+        drinks.make_drink("Cappuccino")
+        drinks.restock()
+        units_left = drinks.ingredients["Foamed Milk"]["units left"]
+        expect(units_left).to eq 10
+    end
+    it "expect 10 units of sugar left after coffee is made and then supply is restocked" do
+        drinks.make_drink("Coffee")
+        drinks.restock()
+        units_left = drinks.ingredients["Sugar"]["units left"]
+        expect(units_left).to eq 10
+    end
+    it "expect 10 units of whipped cream left after Caffe Mocha is made and then supply is restocked" do
+        drinks.make_drink("Caffe Mocha")
+        drinks.restock()
+        units_left = drinks.ingredients["Whipped Cream"]["units left"]
+        expect(units_left).to eq 10
+    end
+    it "expect 10 units of cream left after Coffee is made and then supply is restocked" do
+        drinks.make_drink("Coffee")
+        drinks.restock()
+        units_left = drinks.ingredients["Cream"]["units left"]
+        expect(units_left).to eq 10
+    end
+  end
 end

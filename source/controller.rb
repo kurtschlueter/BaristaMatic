@@ -31,6 +31,6 @@ while command != 'q'
       display.invalid_selection(command)
     end
   end
-  command = ARGF.getc.chomp
+  command = gets.chomp
   command = command.downcase
 end
